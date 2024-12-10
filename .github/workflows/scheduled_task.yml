@@ -1,0 +1,28 @@
+name: Run Daily Task
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Isso faz com que o workflow rode todo dia à meia-noite
+  workflow_dispatch:  # Permite disparar manualmente também
+
+jobs:
+  run_task:
+    runs-on: ubuntu-latest  # Usa a última versão do Ubuntu como ambiente
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Ou a versão que você está utilizando
+        
+      - name: Install dependencies
+        run: npm install
+        
+      - name: Compile TypeScript
+        run: npm run build  # Certifique-se de ter um script "build" configurado no seu package.json
+        
+      - name: Run the script
+        run: node dist/main.js  # Assumindo que a saída do build vai para a pasta "dist" e o arquivo compilado é "main.js"
