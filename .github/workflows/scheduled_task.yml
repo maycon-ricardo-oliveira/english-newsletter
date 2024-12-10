@@ -2,7 +2,7 @@ name: Run Daily Task
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Isso faz com que o workflow rode todo dia à meia-noite
+    - cron: '0 6 * * *'  # Isso faz com que o workflow rode todo dia à meia-noite
   workflow_dispatch:  # Permite disparar manualmente também
 
 jobs:
