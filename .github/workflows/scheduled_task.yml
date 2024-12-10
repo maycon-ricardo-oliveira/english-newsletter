@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'  # Ou a versão que você está utilizando
+          node-version: '22.12.0'  # Ou a versão que você está utilizando
         
       - name: Install dependencies
         run: npm install
@@ -26,3 +26,8 @@ jobs:
         
       - name: Run the script
         run: node dist/main.js  # Assumindo que a saída do build vai para a pasta "dist" e o arquivo compilado é "main.js"
+        env:
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}  # Adicione seu secret aqui
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
